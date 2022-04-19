@@ -2,7 +2,10 @@ class Public::OrdersController < ApplicationController
   def new
   end
 
-  def log
+  def comfirm
+  end
+  
+  def create
   end
 
   def finish

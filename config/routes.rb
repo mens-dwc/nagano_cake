@@ -1,25 +1,59 @@
 Rails.application.routes.draw do
-<<<<<<< HEAD
-  root  'public/homes#top'
-=======
+  #顧客側のTOPページとaboutページのルーティング
+  root "public/homes#top"
+  get "about" => "public/homes#about"
 
-root "public/homes#top"
-get "/home/about" => "public/homes#about", as: "about"
+  # 顧客用
+  # URL /customers/sign_in ...
+  devise_for :customers,skip: [:passwords], controllers: {
+    registrations: "public/registrations",
+    sessions: 'public/sessions'
+  }
 
-# 顧客用
-# URL /customers/sign_in ...
-devise_for :customers,skip: [:passwords], controllers: {
-  registrations: "public/registrations",
-  sessions: 'public/sessions'
-}
+  # 管理者用
+  # URL /admin/sign_in ...
+  devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
+    sessions: "admin/sessions"
+  }
 
-# 管理者用
-# URL /admin/sign_in ...
-devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
-  sessions: "admin/sessions"
-}
+#管理者側のルーティング
+  namespace :admin do
+    get "top" => "homes#top"
 
+    resources :customers,only: [:index, :show, :edit, :update] do
+    end
 
+    resources :items,only: [:new, :index, :show, :edit, :create, :update ] do
+    end
 
->>>>>>> origin/develop
+    resources :genres,only: [:index, :edit, :create, :update ] do
+    end
+
+    resources :making_status,only: [:update] do
+    end
+
+    resources :orders,only: [:show, :update ] do
+    end
+  end
+
+#顧客側のルーティング
+  scope module: :public do
+    resources :addresses,only: [:index, :edit, :create, :update, :destroy ] do
+    end
+
+    resources :cart_items,only: [:index, :create, :update, :destroy, :all_destroy] do
+    end
+
+    get 'customers/withdraw' => 'customers#withdraw'
+    get 'customers/unsubscribe' => 'customers#unsubscribe'
+    resources :customers,only: [:show, :edit, :update, :unsubscribe, :withdraw] do
+    end
+
+    resources :items,only: [:index, :show ] do
+    end
+
+    resources :orders,only: [:new, :create, :index, :comfirm, :finish, :show ] do
+    end
+  end
+
 end
