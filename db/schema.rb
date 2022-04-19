@@ -29,8 +29,6 @@
     t.string "address"
     t.string "name"
 
-ActiveRecord::Schema.define(version: 2022_04_19_024950) do
-
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -100,4 +98,3 @@ ActiveRecord::Schema.define(version: 2022_04_19_024950) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-end
