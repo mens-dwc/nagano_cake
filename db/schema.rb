@@ -9,25 +9,6 @@
 # migrations use external dependencies or application code.
 #
 # It's strongly recommended that you check this file into your version control system.
-  ActiveRecord::Schema.define(version: 2022_04_19_024950) do
-
-  create_table "active_storage_variant_records", force: :cascade do |t|
-    t.integer "blob_id", null: false
-    t.string "variation_digest", null: false
-    t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
-  end
-
-  create_table "cart_items", force: :cascade do |t|
-    t.integer "customer_id"
-    t.integer "item_id"
-    t.integer "quantity"
-  end
-  
-  create_table "addresses", force: :cascade do |t|
-    t.integer "customer_id"
-    t.integer "postal_code"
-    t.string "address"
-    t.string "name"
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -55,6 +36,13 @@
     t.integer "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "addresses", force: :cascade do |t|
+    t.integer "customer_id"
+    t.integer "postal_code"
+    t.string "address"
+    t.string "name"
   end
 
   create_table "cart_items", force: :cascade do |t|
@@ -98,3 +86,5 @@
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+ end
+
