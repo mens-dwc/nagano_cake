@@ -1,2 +1,42 @@
-<h1>Admin::Items#new</h1>
-<p>Find me in app/views/admin/items/new.html.erb</p>
+<h1>新規登録画面</h1>
+
+<table>
+  <%= form_with model: @newitem do |f| %>
+  <tbody>
+      <tr>
+      <td><%= f.label:商品画像 %></td>
+      <td><%= f.file_field :image, accept: "image/*" %></td>
+      </tr>
+
+      <tr>
+      <td><%= f.label:商品名%></td>
+      <td><%= f.text_field :name %></td>
+      </tr>
+
+      <tr>
+      <td><%= f.label:商品説明%></td>
+      <td><%= f.text_area :introduction %></td>
+      </tr>
+
+      <tr>
+      <td><%= f.label:ジャンル%></td>
+      <td><%= f.select :genre_id, [ ["ケーキ",1], ["プリン", 2], ["焼き菓子", 3 ] ,["キャンディ", 4] ], prompt: "ジャンルを選んでください", class: "hoge" %></td>
+      </tr>
+      <tr>
+      <td><%= f.label:税抜価格%></td>
+      <td><%= f.text_field :price %>円</td>
+      </tr>
+
+
+      <tr>
+      <td><%= f.label:販売ステータス%></td>
+      <td><%= f.radio_button :is_status, "false" %>販売中　　<%= f.radio_button :is_status, "true" %>販売中止中</td>
+      </tr>
+
+      <tr>
+      <td><%= f.submit "新規登録" %></td>
+      </tr>
+
+        </tbody>
+</table>
+<% end %>
