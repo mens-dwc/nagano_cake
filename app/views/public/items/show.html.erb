@@ -1,2 +1,18 @@
-<h1>Items#show</h1>
-<p>Find me in app/views/items/show.html.erb</p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+				<%= image_tag @item.get_profile_image, size:'50x50' %>
+				</td>
+				<td>
+					<%= @item.introduction %><br>
+					<%= @item.with_tax_price%><br>
+					<%= form_with model:@cart_item do |f| %>
+					<%= f.hidden_field :item_id %>
+					<%= f.select :quantity, [1,2,3,4,5,6,7,8,9,10] %>
+					<%= f.submit "カートに入れる" %>
+				<% end %>
+				</td>
+			</tr>
+		</tbody>
+	</table>
