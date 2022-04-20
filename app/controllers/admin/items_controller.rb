@@ -9,12 +9,11 @@ class Admin::ItemsController < ApplicationController
   end
 
   def create
-  end 
+  end
 
   def edit
   end
-  
-  
+
   def update
   end
 end
