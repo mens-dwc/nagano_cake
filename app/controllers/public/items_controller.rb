@@ -1,7 +1,12 @@
 class Public::ItemsController < ApplicationController
-  def index
+  #ログインユーザーのみproduct#indexは閲覧可
+ 
+  def index #items_path
+    @items=Item.all
   end
 
-  def show
+  def show #item_path(item.id)
+   @item=Item.find(params[:id])
+   
   end
 end
