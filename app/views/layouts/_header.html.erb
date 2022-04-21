@@ -1,5 +1,5 @@
 <header class="shadow-sm">
-  
+
   <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container">
       <a class="navbar-brand p-3" href="/"><%= image_tag('logo.png', size: "100x100") %></a>
@@ -14,7 +14,7 @@
         </li>
 
         <li class="nav-item">
-          <%= link_to "マイページ", class: 'nav-link text-dark' %>
+          <%= link_to "マイページ", customer_path(current_customer), class: 'nav-link text-dark' %>
         </li>
         <li class="nav-item">
           <%= link_to "商品一覧", items_path, class: 'nav-link text-dark' %>
