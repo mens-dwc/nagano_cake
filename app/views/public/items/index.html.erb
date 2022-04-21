@@ -8,13 +8,14 @@
 		<tbody>
 			<tr>
 		    <% @items.each do |item| %>
-				<td><%= link_to item_path(item.id) do %>
-				<%= image_tag item.get_profile_image, size:'50x50' %>
-				<% end %>
-				<br>
+				<td><% if item.image.attached? %>
+        <%= image_tag item.image, size: "50x50" %>
+        <% else %>
+        <%= image_tag 'no_image', size: "50x50" %>
+        <% end %><br>
 				<%= item.name %><br>
 				<%= item.price %>円<br>
-				<%= item.introduction%></td>
+				</td>
 			<% end %>
 			</tr>
 		</tbody>

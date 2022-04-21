@@ -1,7 +1,7 @@
 <h1>新規登録画面</h1>
 
 <table>
-  <%= form_with model: @newitem do |f| %>
+  <%= form_with model: @item,url: admin_items_path do |f| %>
   <tbody>
       <tr>
       <td><%= f.label:商品画像 %></td>
@@ -38,5 +38,5 @@
       </tr>
 
         </tbody>
-<% end %>
 </table>
+<% end %>
