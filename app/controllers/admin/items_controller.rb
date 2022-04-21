@@ -4,7 +4,7 @@ class Admin::ItemsController < ApplicationController
   def new #new_admin_item
      @newitem=Item.new
   end
-  
+
   def create #admin_items_path
      @newitem = Item.new(item_params)
     if @newitem.save
@@ -14,7 +14,7 @@ class Admin::ItemsController < ApplicationController
     end
   end
 
-  
+
   def index #admin_items_path
     @items=Item.all
   end
@@ -23,7 +23,7 @@ class Admin::ItemsController < ApplicationController
     @item=Item.find(params[:id])
   end
 
-  
+
   def edit #edit_admin_item
       @item=Item.find(params[:id])
   end
