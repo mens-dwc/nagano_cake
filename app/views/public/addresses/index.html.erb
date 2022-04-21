@@ -32,7 +32,7 @@
       <td><%= address.address %></td>
       <td><%= address.name %></td>
       <td colspan="4">
-        <%= link_to "編集する", edit_address_path(address) %>
+        <%= link_to "編集する", edit_address_path(address), class: 'btn btn-success' %>
         <%= link_to "削除する", address_path(address), method: :delete, confirm: "本当に削除しますか" %></td>
       </td>
     </tr>
