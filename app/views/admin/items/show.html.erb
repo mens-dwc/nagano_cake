@@ -1,10 +1,18 @@
-<table>
-  <tbody>
-        <% if @item.image.attached? %>
-        <%= image_tag @item.image, size: "50x50" %>
+<div class='container'>
+  <div class='row'>
+    <div class='col-md-5'>
+       <div class="mt-5">
+         <% if @item.image.attached? %>
+        <%= image_tag @item.image, size: "300x300" %>
         <% else %>
-        <%= image_tag 'no_image', size: "50x50" %>
+        <%= image_tag 'no_image', size: "300x300" %>
         <% end %>
+        </div>
+        </div>
+
+<div class="mt-5">
+<table class="table">
+  <tbody>
         <tr>
         <td>商品名 <%= @item.name %></td>
         </tr>
@@ -18,7 +26,7 @@
         </tr>
 
         <tr>
-        <td>税込価格<br>(税抜価格) <%= @item.price*1.1 %>  (<%= @item.price %>)円</td>
+        <td>税込価格<br>(税抜価格) <%= @item.with_tax_price %>  (<%= @item.price %>)円</td>
         </tr>
 
         <tr>
@@ -29,7 +37,10 @@
         </tr>
 
         <tr>
-        <td><%=link_to "編集",edit_admin_item_path(@item.id) %></td>
+        <td><%=link_to "編集",edit_admin_item_path(@item.id),class: 'btn btn-success'%></td>
         </tr>
   </tbody>
 </table>
+</div>
+</div>
+</div>

@@ -1,42 +1,38 @@
-<h1>新規登録画面</h1>
+<div class="container">
+  <h2 class="mt-5">新規登録画面</h2>
 
-<table>
   <%= form_with model: @item,url: admin_items_path do |f| %>
-  <tbody>
-      <tr>
-      <td><%= f.label:商品画像 %></td>
-      <td><%= f.file_field :image, accept: "image/*" %></td>
-      </tr>
+ <div class="form-group ">
+  <%= f.label:商品画像 %>
+  <%= f.file_field :image, accept: "image/*" %>
+  </div>
 
-      <tr>
-      <td><%= f.label:商品名%></td>
-      <td><%= f.text_field :name %></td>
-      </tr>
+  <div class="form-group ">
+      <%= f.label:商品名%>
+      <%= f.text_field :name,class: 'form-control'%>
+  </div>
 
-      <tr>
-      <td><%= f.label:商品説明%></td>
-      <td><%= f.text_area :introduction %></td>
-      </tr>
+  <div class="form-group ">
+  <%= f.label:商品説明%>
+  <%= f.text_area :introduction,class: 'form-control'%>
+  </div>
 
-      <tr>
-      <td><%= f.label:ジャンル%></td>
-      <td><%= f.select :genre_id, [ ["ケーキ",1], ["プリン", 2], ["焼き菓子", 3 ] ,["キャンディ", 4] ], prompt: "ジャンルを選んでください", class: "hoge" %></td>
-      </tr>
-      <tr>
-      <td><%= f.label:税抜価格%></td>
-      <td><%= f.text_field :price %>円</td>
-      </tr>
+  <div class="form-group ">
+  <%= f.label:ジャンル%>
+  <%= f.select :genre_id, [ ["ケーキ",1], ["プリン", 2], ["焼き菓子", 3 ] ,["キャンディ", 4] ], prompt: "ジャンルを選んでください",class: 'form-control' %></td>
+  </div>
 
+  <div class="form-group ">
+  <%= f.label:税抜価格%>
+  <%= f.text_field :price,class: 'form-control'%>円
 
-      <tr>
-      <td><%= f.label:販売ステータス%></td>
-      <td><%= f.radio_button :is_status, "false" %>販売中　　<%= f.radio_button :is_status, "true" %>販売中止中</td>
-      </tr>
+  <div class="form-group ">
+  <%= f.label:販売ステータス%>
+  <%= f.radio_button :is_status, "false" ,class: 'form-control'%>販売中　　<%= f.radio_button :is_status, "true",class: 'form-control'%>販売中止中
+  </div>
 
-      <tr>
-      <td><%= f.submit "新規登録" %></td>
-      </tr>
-
-        </tbody>
-</table>
+  <div "form-group row">
+  <%= f.submit "新規登録",class: 'btn btn-success' %>
+  <div>
 <% end %>
+</div>
