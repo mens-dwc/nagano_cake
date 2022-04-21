@@ -13,7 +13,6 @@ class Admin::ItemsController < ApplicationController
       render :new
     end
   end
-
   
   def index #admin_items_path
     @items=Item.all
