@@ -1,6 +1,6 @@
 <h1>管理側商品一覧</h1>
 
-<h1><%= link_to "新規商品登録",new_admin_item_path %></h1>
+<h1><%= link_to "新規商品登録", new_admin_item_path %></h1>
 <table>
   <thead>
     <tr>
@@ -10,18 +10,29 @@
          <th>ジャンル</th>
           <th>ステータス</th>
     </tr>
+  </thead>
 
     <tbody>
       <%= @items.each do |item| %>
-      <tr>
+      <td>
         <td><%= item.id %></td>
         <td><%= item.name %></td>
-        <td><%= item.price %></td>
+        <td><%= item.price %>円</td>
         <td><%= item.genre_id %></td>
-        <td><%= item.is_status %></td>
+
+
+        <td><% if item.is_status==false %>販売中
+            <% else item.is_status==true %>販売停止中
+            <% end %>
+        </td>
+        <td><%# if item.image.attached? %>
+        <%#= image_tag item.image, size: "50x50" %>
+        <%# else %>
+        <%#= image_tag 'no_image', size: "50x50" %>
+        <%# end %>
+        </td>
       </tr>
       <% end %>
-
 
     </tbody>
   </thead>
