@@ -14,7 +14,6 @@ class Admin::ItemsController < ApplicationController
     end
   end
 
-
   def index #admin_items_path
     @items=Item.all
   end
