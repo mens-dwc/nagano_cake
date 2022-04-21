@@ -17,15 +17,16 @@
       <tr>
       <% @items.each do |item| %>
         <td><%= item.id %></td>
-        <td><%= item.name %></td>
+        <td><%=link_to admin_item_path(item.id) do %>
+            <%= item.name %>
+            <% end %>
+        </td>
         <td><%= item.price %>円</td>
         <td></td><%#= if item.genre_id==1%><%#ケーキ
         　　<%# elsif item.genre_id==2 %><%#プリン
         　　<%# elsif item.genre_id==3 %><%#焼き菓子
         　　<%# else item.genre_id==4 %><%#キャンディ
         　　<%# end %>
-        
-
 
         <td><% if item.is_status==false %><span class="text-success">販売中</span>
             <% else item.is_status==true %><span class="text-danger">販売停止中</span>
