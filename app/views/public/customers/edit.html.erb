@@ -1,2 +1,6 @@
-<h1>Customers#edit</h1>
-<p>Find me in app/views/customers/edit.html.erb</p>
+<div class="container">
+  <h2 class="mt-5">会員情報編集</h2>
+  <%= form_with model: @customer, url: customer_path(@customer.id), method: :patch do |f| %>
+  
+  <% end %>
+</div>

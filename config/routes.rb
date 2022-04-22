@@ -41,7 +41,10 @@ Rails.application.routes.draw do
     resources :addresses,only: [:index, :edit, :create, :update, :destroy ] do
     end
 
-    resources :cart_items,only: [:index, :create, :update, :destroy, :all_destroy] do
+    resources :cart_items,only: [:index, :create, :update, :destroy ] do
+      collection do
+        delete 'all_destroy'
+      end
     end
 
     get 'customers/withdraw' => 'customers#withdraw'
@@ -52,7 +55,9 @@ Rails.application.routes.draw do
     resources :items,only: [:index, :show ] do
     end
 
-    resources :orders,only: [:new, :create, :index, :comfirm, :finish, :show ] do
+    get 'orders/finish' => 'orders#finish'
+    get 'orders/comfirm' => 'orders#comfirm'
+    resources :orders,only: [:new, :create, :index, :show ] do
     end
   end
 
