@@ -47,8 +47,8 @@ Rails.application.routes.draw do
       end
     end
 
-    get 'customers/withdraw' => 'customers#withdraw'
-    get 'customers/unsubscribe' => 'customers#unsubscribe'
+    patch '/customers/withdraw' => 'customers#withdraw', as: 'withdraw'
+    get 'customers/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
     resources :customers,only: [:show, :edit, :update ] do
     end
 
