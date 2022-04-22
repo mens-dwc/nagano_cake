@@ -6,7 +6,7 @@
     退会する場合は、「退会する」をクリックしてください。
   </p>
   <div class="mt-5 text-center">
-    <%= link_to "退会しない", customer_path(current_customer), class: 'btn btn-primary' %>
-    <%= link_to "退会する", root_path, method: :patch, data: {confirm: "ほんまにええの？"}, class: "btn btn-danger" %>
+    <%= link_to "退会しない", customer_path(current_customer), class: 'btn btn-primary btn-lg' %>
+    <%= link_to "退会する", root_path, method: :patch, data: {confirm: "ほんまにええの？"}, class: "btn btn-danger btn-sm" %>
   </div>
 </div>
