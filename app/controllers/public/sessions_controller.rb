@@ -2,8 +2,7 @@
 
 class Public::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
-<<<<<<< Updated upstream
-=======
+
   before_action :customer_state, only: [:create]
 
   protected
@@ -20,7 +19,7 @@ class Public::SessionsController < Devise::SessionsController
       redirect_to new_user_registration
     end
   end
->>>>>>> Stashed changes
+
 
   # GET /resource/sign_in
   # def new
