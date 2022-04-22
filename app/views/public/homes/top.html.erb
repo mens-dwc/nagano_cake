@@ -13,7 +13,7 @@
         <% @items.last(4).each do |item| %>
           <div class="col-xs-3" style="padding-right: 0px; padding-left: 0px;">
             <%= link_to item_path(item.id) ,style: "color: black;", data: {"turbolinks" => false} do %>
-            #画像入れたい
+            <%= image_tag item.image, size: "150x150" %><br>
             <%= item.name %><br>
             ¥<%= item.price.to_s(:delimited, delimiter: ',') %>
         <% end %>
