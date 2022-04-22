@@ -3,15 +3,15 @@
   <%= form_with model: @address, url: '/addresses', method: :post do |f| %>
     <div class="form-group ">
       <%= f.label :郵便番号（ハイフンなし） %>
-      <%= f.text_field :postal_code, class: 'form-control',:placeholder => "例:1234567" %>
+      <%= f.text_field :postal_code, class: 'col-sm-3 form-control',:placeholder => "例:1234567" %>
     </div>
     <div class="form-group">
       <%= f.label :住所 %>
-      <%= f.text_field :address, class: 'form-control',:placeholder => "例:長野県〇〇市〇〇町1-1-1"  %>
+      <%= f.text_field :address, class: 'col-sm-5 form-control',:placeholder => "例:長野県〇〇市〇〇町1-1-1"  %>
     </div>
     <div class="form-group">
       <%= f.label :宛名 %>
-      <%= f.text_field :name, class: 'form-control',:placeholder => "例:ながのCAKE" %>
+      <%= f.text_field :name, class: 'col-sm-5 form-control',:placeholder => "例:ながのCAKE" %>
     </div>
     <div class="form-group">
       <%= f.submit '新しい配送先を登録',class: 'btn btn-primary' %>
