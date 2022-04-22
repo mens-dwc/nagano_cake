@@ -1,8 +1,8 @@
 <h1>ショッピングカート</h1>
 
-    <h1><%=link_to "カートを空にする",cart_item_path,mehod: :delete,"data-confirm" => '本当に消しますか？'%></h1>
+    <h1><%= link_to "カートを空にする", cart_items_path, method: :delete, class: "pull-right btn btn-danger" %></h1>
 
-<%= form_with model:@cart_item do |f| %>
+
 <table>
     <thead>
         <tr>
@@ -15,23 +15,24 @@
     </thead>
 
     <tbody>
+        <% @cart_items.each do |cart_item| %>
         <tr>
-            <% @cart_items.each do |cart_item| %>
-		    <td><%= image_tag cart_item.imtem.get_profile_image, size:'50x50' %></td>
+		    <%#= image_tag cart_item.image ,size:'50x50' %>
             <td><%= cart_item.item.name %></td>
-            <td><%= cart_item.item.with_tax_price%></td>
-            <td><%= f.hidden_field :item_id %>
-			    <%= f.select :quantity, [1,2,3,4,5,6,7,8,9,10] %>
-			    <%=link_to "変更",cart_items_path,mehod: :post%>
+            <td><%= cart_item.with_tax_price%></td>
+            <td><%#= f.hidden_field :item_id %>
+			    <%#= f.select :quantity, [1,2,3,4,5,6,7,8,9,10] %>
+			    <%#=link_to "変更",cart_items_path,mehod: :post %>
 			</td>
-            <td><%= cart_item.subtotal%></td>
-            <td><%=link_to "destroy",cart_item_path, method: :delete,"data-confirm" => '本当に消しますか？'%></td>
+            <td><%#= cart_item.subtotal%></td>
+            <td><%#=link_to "destroy",cart_item_path, method: :delete,"data-confirm" => '本当に消しますか？'%></td>
+            <% end %>
         </tr>
 
         <tr>
             <td>買い物を続ける</td>
             <td>合計金額</td>
-            <td><% @total_price %></td>
+            <td><%# @total_price %></td>
         </tr>
 
         <tr>
