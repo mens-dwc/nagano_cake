@@ -1,18 +1,33 @@
-	<table>
-		<tbody>
-			<tr>
-				<td>
-				<%= image_tag @item.get_profile_image, size:'50x50' %>
-				</td>
-				<td>
-					<%= @item.introduction %><br>
-					<%= @item.with_tax_price%><br>
-					<%= form_with model:@cart_item do |f| %>
-					<%= f.hidden_field :item_id %>
-					<%= f.select :quantity, [1,2,3,4,5,6,7,8,9,10] %>
-					<%= f.submit "カートに入れる" %>
-				<% end %>
-				</td>
-			</tr>
-		</tbody>
-	</table>
+<div class='container'>
+  <div class='row'>
+    <div class='col-5'>
+       <div class="mt-5">
+         <% if @item.image.attached? %>
+        <%= image_tag @item.image, size: "300x300" %>
+        <% else %>
+        <%= image_tag 'no_image', size: "300x300" %>
+        <% end %>
+        </div>
+    </div>
+
+<div class='col-6'>
+  <div class="mt-5">
+    <table class="table">
+				<tbody>
+					<tr>
+						<td>
+							<%= @item.name %>
+							<%= @item.introduction %><br>
+							<%= @item.with_tax_price%><br>
+							<%= form_with model:@cart_item do |f| %>
+							<%= f.hidden_field :item_id %>
+							<%= f.select :quantity, [1,2,3,4,5,6,7,8,9,10] %>
+							<%= f.submit "カートに入れる" %>
+						<% end %>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+	</div>
+　</div>
+</div>

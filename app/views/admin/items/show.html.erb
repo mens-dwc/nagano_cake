@@ -10,43 +10,43 @@
         </div>
         </div>
 
-<div class='col-6'>
-  <div class="mt-5">
-    <table class="table">
-      <tbody>
-        <tr>
-        <th>商品名</th><td><%= @item.name %></td>
-        </tr>
+          <div class='col-6'>
+            <div class="mt-5">
+              <table class="table">
+                <tbody>
+                  <tr>
+                  <th>商品名</th><td><%= @item.name %></td>
+                  </tr>
 
-        <tr>
-        <th>商品説明</th><td><%= @item.introduction %></td>
-        </tr>
+                  <tr>
+                  <th>商品説明</th><td><%= @item.introduction %></td>
+                  </tr>
 
-        <tr>
-        <th>ジャンル名</th><td><%= @item.genre_id %></td>
-        </tr>
+                  <tr>
+                  <th>ジャンル名</th><td><%= @item.genre_id %></td>
+                  </tr>
 
-        <tr>
-        <th>税込価格<br>(税抜価格)</th><td><%= @item.with_tax_price %><br>(<%= @item.price %>)円</td>
-        </tr>
+                  <tr>
+                  <th>税込価格<br>(税抜価格)</th><td><%= @item.with_tax_price %><br>(<%= @item.price %>)円</td>
+                  </tr>
 
-        <tr>
-        <th>ステータス</th>
-        <td><% if @item.is_status==false %>販売中
-            <% else @item.is_status==true %>販売停止中
-            <% end %>
-        </td>
-        </tr>
+                  <tr>
+                  <th>ステータス</th>
+                  <td><% if @item.is_status==false %>販売中
+                      <% else @item.is_status==true %>販売停止中
+                      <% end %>
+                  </td>
+                  </tr>
 
-        <tr>
-        <td class="row justify-content-center">
-        <%=link_to "編集",edit_admin_item_path(@item.id),class: 'btn btn-success'%>
-        </td>
-        </tr>
+                  <tr>
+                  <td class="row justify-content-center">
+                  <%=link_to "編集",edit_admin_item_path(@item.id),class: 'btn btn-success'%>
+                  </td>
+                  </tr>
 
-  </tbody>
-</table>
-</div>
-</div>
-</div>
+                </tbody>
+              </table>
+            </div>
+          </div>
+  </div>
 </div>
