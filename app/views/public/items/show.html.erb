@@ -12,16 +12,23 @@
 
             <div class='col-6'>
               <div class="mt-5">
-                <h1><%= @item.name %><br></h1>
-                <h2><%= @item.introduction %><br></h2>
-                <h3>￥<%= @item.with_tax_price%><span>(税込)</span></h3>
-
-                <%= form_with model: @cart_item ,url: cart_items_path do |f| %>
-                <%= f.hidden_field:item_id,value: @item.id %>
-                <%= f.select :quantity,*[1..10] %>
-                <%= f.submit "カートに入れる",class: 'btn btn-success' %>
-              <% end %>
-              </div>
-          　</div>
+                <table class="table">
+            				<tbody>
+            					<tr>
+            						<td>
+            							<%= @item.name %><br>
+            							<%= @item.introduction %><br>
+            							<%= @item.with_tax_price%><br>
+            							<%= form_with model:@cart_item do |f| %>
+            							<%= f.hidden_field :item_id %>
+            							<%= f.select :quantity, [1,2,3,4,5,6,7,8,9,10] %>
+            							<%= f.submit "カートに入れる" %>
+            						<% end %>
+            						</td>
+            					</tr>
+            				</tbody>
+            			</table>
+            	</div>
+            　</div>
   </div>
 </div>
