@@ -8,5 +8,22 @@
         購入には会員登録が必要になります。<br>
       </h4>
     </div>
+    <div class="mx-auto">
+      <div class="item--card-content">
+        <% @items.last(4).each do |item| %>
+          <div class="col-xs-3" style="padding-right: 0px; padding-left: 0px;">
+            <%= link_to item_path(item.id) ,style: "color: black;", data: {"turbolinks" => false} do %>
+            #画像入れたい
+            <%= item.name %><br>
+            ¥<%= item.price.to_s(:delimited, delimiter: ',') %>
+        <% end %>
+          </div>
+        <% end %>
+            <div>
+        </div>
+    </div>
+    <h3><%= link_to "もっと見る", items_path, class: "pull-right", style: "font-family: HiraMinPro-W6; color: #000000; margin: 30px 0;" %></h3>
+    </div>
+
   </div>
 </div>

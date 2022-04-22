@@ -1,25 +1,34 @@
-<div class="container">
-  <h2 class="mt-5">商品一覧</h2>
+<div class='container'>
+  <div class='row'>
+    <div class='col-12'>
+      <h2 class="mt-5">商品一覧    全<%= @items.count%>件数は販売中だけにしたい</h2>
+				  	<div class="d-flex align-content-around flex-wrap">
+				  		<table>
+				  			<tbody>
+				  				<tr>
+							  <% @items.each do |item| %>
+						     <% if item.is_status==false %>
+									<% if item.image.attached? %>
+										<td><%=link_to item_path(item.id) do %>
+											  <%= image_tag item.image, size: "150x150" %><br>
+											  <% end %>
+												<% else %>
+										<td><%=link_to item_path(item.id) do %>
+												<%= image_tag 'no_image', size: "150x150" %><br>
+												<% end %>
+												<% end %>
+												<%= item.name %><br>
+												￥<%= item.with_tax_price %>円<br>
+										</td>
+										</td>
+									<% else %>
+									<% end %>
+									<% end %>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+		</div>
+	</div>
+</div>
 
-<table>
-	<thead>
-		<tr>
-			<th></th>
-			<th colspan="3"></th>
-		</tr>
-	</thead>
-		<tbody>
-			<tr>
-		    <% @items.each do |item| %>
-				<td><% if item.image.attached? %>
-        <%= image_tag item.image, size: "50x50" %>
-        <% else %>
-        <%= image_tag 'no_image', size: "50x50" %>
-        <% end %><br>
-				<%= item.name %><br>
-				<%= item.price %>円<br>
-				</td>
-			<% end %>
-			</tr>
-		</tbody>
-</table>
