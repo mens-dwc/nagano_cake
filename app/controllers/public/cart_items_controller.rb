@@ -1,4 +1,5 @@
 class Public::CartItemsController < ApplicationController
+  
   def index #cart_items_path
    @cart_items=current_customer.cart_items
    @total_price+=@cart_items.subtotal 
