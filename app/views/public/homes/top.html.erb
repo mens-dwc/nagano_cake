@@ -12,13 +12,19 @@
       <div class="item--card-content">
         <% @items.last(4).each do |item| %>
           <div class="col-xs-3" style="padding-right: 0px; padding-left: 0px;">
+            <% if item.image.attached? %>
             <%= link_to item_path(item.id) ,style: "color: black;", data: {"turbolinks" => false} do %>
             <%= image_tag item.image, size: "150x150" %><br>
+					  <% end %>
+					  <% else %>
+					  <%= link_to item_path(item.id) ,style: "color: black;", data: {"turbolinks" => false} do %>
+					  <%= image_tag 'no_image', size: "150x150" %><br>
+						<% end %>
+						<% end %>
             <%= item.name %><br>
             ¥<%= item.price.to_s(:delimited, delimiter: ',') %>
-        <% end %>
-          </div>
-        <% end %>
+            <% end %>
+            </div>
             <div>
         </div>
     </div>
