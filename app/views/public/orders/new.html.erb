@@ -1,2 +1,24 @@
-<h1>Orders#new</h1>
-<p>Find me in app/views/orders/new.html.erb</p>
+<h1 class="text-center">注文情報入力</h1>
+
+<div class="mx-auto w-50 border rounded bg-white p-3">
+<%= form_with(url: orders_path, method: :post, local: true) do |f| %>
+
+  <div class="form-group">
+    <div class="lead mb-2">支払い方法</div>
+    <%= f.radio_button :payment_type, 0 %>
+    クレジットカード
+    <%= f.radio_button :payment_type, 1 %>
+    銀行振込
+  </div>
+
+  <div class="form-group mt-4">
+    <div class="lead">お届け先</div>
+    <% if current_customer.address %>
+
+        <%= f.radio_button :address_select, 0 %>
+        <%= f.label :ご自身の住所 %>
+        <%= current_customer.address %>
+
+    <% end %>
+  <% end %>
+  </div>

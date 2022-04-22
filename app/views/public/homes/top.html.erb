@@ -1,6 +1,6 @@
 <div class="container" style="margin-top: 20px;">
   <div class="row">
-    <div class="mx-auto">
+    <div class="col-8, mx-auto">
       <%= image_tag('top.png', size: "800x400") %>
       <h4 style="font-family: HiraMinPro-W6; color: #000000; margin: 20px 0;">ようこそ、NaganoCakeへ！<br>
         このサイトは、ケーキ販売のECサイトになります。<br>
@@ -8,7 +8,8 @@
         購入には会員登録が必要になります。<br>
       </h4>
     </div>
-    <div class="mx-auto">
+    
+    <div class="col-4, mx-auto">
       <div class="item--card-content">
         <% @items.last(4).each do |item| %>
           <div class="col-xs-3" style="padding-right: 0px; padding-left: 0px;">
@@ -30,6 +31,5 @@
     </div>
     <h3><%= link_to "もっと見る", items_path, class: "pull-right", style: "font-family: HiraMinPro-W6; color: #000000; margin: 30px 0;" %></h3>
     </div>
-
   </div>
 </div>
