@@ -15,7 +15,7 @@
         </tr>
       <!--合計金額totalの初期化-->
         <% total = 0 %>
-        <% @cart_items.each do |cart_item| %> 
+        <% @cart_items.each do |cart_item| %>
         <tr>
           <td><%= attachment_image_tag(cart_item.item, :image, size: "60x50", fallback: "no_image.jpg") %>
               <%= cart_item.item.name %></td>
@@ -58,7 +58,7 @@
   </div>
 
   <div class="row justify-content-center">
-    <%= form_with model: @order, url: orders_path, method: :post, local: true do |f| %>
+    <%= form_with model: @order, url: orders_finish_path, method: :post, local: true do |f| %>
       <%= f.hidden_field :customer_id %>
       <%= f.hidden_field :postage %>
       <%= f.hidden_field :total_payment %>
