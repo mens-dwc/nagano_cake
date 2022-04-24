@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
       if customer_signed_in?
         about_path
       else
-        new_admin_session_path
+        admin_root_path
       end
    end
 
