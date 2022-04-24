@@ -10,9 +10,9 @@ class Public::CartItemsController < ApplicationController
   def create #cart_items_path post
     cart_item=CartItem.new(cart_item_params)
     cart_item.customer_id=current_customer.id
-  
+
     if current_customer.cart_items.find_by(item_id: params[:cart_item][:item_id]).present?
-                    #元々カート内にあるもの「item_id」　
+                    #元々カート内にあるもの「item_id」
                     #今追加した　　　　　　　params[:cart_item][:item_id])
       cart_item = current_customer.cart_items.find_by(item_id: params[:cart_item][:item_id])
       cart_item.quantity += params[:cart_item][:quantity].to_i
@@ -20,14 +20,14 @@ class Public::CartItemsController < ApplicationController
                                                         #.to_iとして数字として扱う
       cart_item.save
       redirect_to cart_items_path
-  # もしカート内に「同じ」商品がない場合は通常の保存処理 
+  # もしカート内に「同じ」商品がない場合は通常の保存処理
     elsif cart_item.save
           　@cart_items = current_member.cart_items.all
           　render 'index'
     else　# 保存できなかった場合
           render 'index'
     end
-    
+
   end
 
 
