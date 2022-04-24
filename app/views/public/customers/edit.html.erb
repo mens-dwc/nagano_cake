@@ -5,14 +5,18 @@
       <%= form_with model: @customer, url: customer_path(@customer.id), method: :patch do |f| %>
         <div class="col-xs-10">
           <%= f.label :"氏名", class: "col-sm-3 control-label" %>
-          <div class="form-group col-xs-12">
-            <%= f.text_field :last_name, class: "last_name col-sm-3 form-control-static name" %>
-            <%= f.text_field :first_name, class: "first_name col-sm-3 form-control-static name" %>
+          <div class="form-group">
+            <div class="form-inline">
+              <%= f.text_field :last_name, class: "col-sm-5 form-control" %>
+              　<%= f.text_field :first_name, class: "col-sm-5 form-control" %>
+            </div>
           </div>
           <%= f.label :"フリガナ", class: "col-sm-3 control-label" %>
-          <div class="form-group col-xs-12">
-            <%= f.text_field :kana_last_name, class: "col-sm-3 form-control-static name" %>
-            <%= f.text_field :kana_first_name, class: "col-sm-3 form-control-static name" %>
+          <div class="form-group">
+            <div class="form-inline">
+              <%= f.text_field :kana_last_name, class: "col-sm-5 form-control" %>
+              　<%= f.text_field :kana_first_name, class: "col-sm-5 form-control" %>
+            </div>
           </div>
           <div class="form-group col-xs-12">
             <%= f.label :"メールアドレス", class: "col-sm-5 control-label" %>
