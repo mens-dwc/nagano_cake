@@ -20,6 +20,11 @@
           <%= order.address %>
           <%= order.name %>
         </td>
+        <td>
+          <% @ordered_items.each do |ordered_item| %>
+            <%= ordered_item.name %>
+          <% end %>
+        </td>
         <td><%= order.total_payment %>円</td>
         <td><%= order.status %></td>
         <td colspan="6">
@@ -30,5 +35,5 @@
     <% end %>
   </table>
   <% else %>
-    <p>注文履歴がありません。</p>
+  <p>注文履歴がありません。</p>
 <% end %>

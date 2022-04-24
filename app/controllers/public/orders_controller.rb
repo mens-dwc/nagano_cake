@@ -53,6 +53,7 @@ class Public::OrdersController < ApplicationController
 
   def index
     @orders = Order.all
+    @ordered_items = @OrderedItem.all
   end
 
   def show
