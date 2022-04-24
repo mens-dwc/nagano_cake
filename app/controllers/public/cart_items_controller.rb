@@ -22,9 +22,9 @@ class Public::CartItemsController < ApplicationController
             redirect_to cart_items_path
            # もしカート内に「同じ」商品がない場合は通常の保存処理
     elsif cart_item.save
-          redirect_to cart_items_path
-    else # 保存できなかった場合
-          render 'customer/items/show'
+         redirect_to cart_items_path
+    else # 保存できなかった場合 商品詳細画面へ
+         redirect_to item_path(item.id)
     end
   end
 
