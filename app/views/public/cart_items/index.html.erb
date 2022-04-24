@@ -21,11 +21,11 @@
                         <tr>
                             <td><%= cart_item.item.name %></td>
                             <td><%= cart_item.item.with_tax_price %>円</td>
-                            <td><%= cart_item.quantity %>個</td>
+                            <td><%= cart_item.quantity.to_i%>個</td>
                             <td><%= cart_item.subtotal %>円</td>
                             <td><%=link_to "削除する", cart_item_path(cart_item.id), method: :delete %></td>
                         </tr>
-                　　　　<% end %>
+                        <% end %>
                         <tr>
                             <td colspan="3"><%=link_to "買い物を続ける",items_path ,class: 'btn btn-sm btn-primary' %></td>
                             <td>合計金額</td>
