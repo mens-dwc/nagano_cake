@@ -22,7 +22,7 @@
             <%= item.name %>
             <% end %>
         </td>
-        <td><%= item.price %>円</td>
+        <td><%= item.price.to_s(:delimited)%>円</td>
         <td><%= item.genre.name %></td>
         <td><% if item.is_status==false %><span class="text-success">販売中</span>
             <% else item.is_status==true %><span class="text-danger">販売停止中</span>
