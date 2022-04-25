@@ -4,6 +4,6 @@ class Public::GenresController < ApplicationController
     @items = Item.where(genre_id: @genre.id)
     @genres = Genre.all
     #@genress =Genre.where(is_genres_status: 'false')
-    @itemss=Item.all
+    @itemss =@items.where(is_status: 'false')
   end
 end

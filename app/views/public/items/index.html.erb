@@ -7,14 +7,14 @@
         </td>
       </tr>
       <% @genres.each do |genre| %>
-      <% if genre.is_genres_status == false %>
+      <%# if genre.is_genres_status == false %>
         <tr>
           <td>
             <%= link_to genre.name,genre_path(genre.id),class:"ec-genre-list-item"%>
             </td>
         </tr>
            <% end %>
-           <% end %>
+           <%# end %>
     </table>
 
 
