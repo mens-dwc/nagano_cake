@@ -6,7 +6,7 @@ class CartItem < ApplicationRecord
 
 #税込み価格＊個数
   def subtotal
-    item.with_tax_price * quantity
+    item.with_tax_price*quantity
   end
 
 end
