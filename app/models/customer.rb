@@ -7,6 +7,9 @@ class Customer < ApplicationRecord
   has_many :cart_items
   has_many :addresses
 
+  validates :last_name, :kana_last_name, :postal_code, :address, :tel_number, presence:true
+
+
   def active_for_authentication?
     super && (is_deleted == false)
   end

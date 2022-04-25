@@ -7,6 +7,7 @@ class Public::OrdersController < ApplicationController
 
   def comfirm #注文確認
     @order = Order.new(order_params)
+    
 
     if params[:order][:address_option] == "0" #cutomerの登録時の住所
       @order.postal_code = current_customer.postal_code
@@ -42,9 +43,6 @@ class Public::OrdersController < ApplicationController
       @ordered_item.order_id =  @order.id #注文商品に注文idを紐付け
       @ordered_item.save #注文商品を保存
     end #ループ終わり
-
-     current_customer.cart_items.destroy_all #カートの中身を削除
-     redirect_to orders_finish_path
 
   end
 
