@@ -9,7 +9,7 @@ class Public::OrdersController < ApplicationController
     @order = Order.new(order_params)
 
     if params[:order][:address_option] == "0" #cutomerの登録時の住所
-      @order._postal_code = current_customer.postal_code
+      @order.postal_code = current_customer.postal_code
       @order.address = current_customer.address
       @order.name = current_customer.last_name + current_customer.first_name
     elsif params[:order][:address_option] == "1" #登録済み住所
@@ -52,7 +52,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
-    @orders = Order.all
+    @orders = Order.where(customer_id:current_customer)
   end
 
   def show
@@ -64,7 +64,7 @@ class Public::OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:postal_code, :address, :name, :payment_type, :total_payment)
+    params.require(:order).permit(:postal_code, :address, :name, :payment_type, :total_payment, :order,)
   end
 
 end

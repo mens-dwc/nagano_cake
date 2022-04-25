@@ -2,10 +2,10 @@
   <h2 class="mt-5">
     <%= @customer.last_name %><%= @customer.first_name %>さんの会員情報編集画面
   </h2>
+  <%= form_with model: @customer, url: admin_customer_path, method: :patch do |f| %>
   <div class="row">
     <div class="col-xs-8 mt-3">
       <table class="table table-borderless">
-        <%= form_with model: @customer, url: admin_customer_path, method: :patch do |f| %>
         <tbody>
           <tr>
             <td>会員ID</td>
@@ -76,10 +76,10 @@
           <tr>
             <td>会員ステータス</td>
             <td>
-              <%= f.radio_button :is_deleted,{value: :false} %>
-              <%= f.label :is_deleted, "有効" %>
-              　<%= f.radio_button :is_deleted,{value: :true} %>
-              <%= f.label :is_deleted, "退会" %>
+              <%= f.radio_button :is_deleted, false %>
+            　<%= f.label :is_deleted, "有効", {value: :false, style: "display: inline-block;"} %>
+              　<%= f.radio_button :is_deleted, true %>
+            　<%= f.label :is_deleted, "退会", {value: :true, style: "display: inline-block;"} %>
             </td>
           </tr>
           <tr>
@@ -90,8 +90,8 @@
             </td>
           </tr>
         </tbody>
-        <% end %>
       </table>
     </div>
   </div>
+  <% end %>
 </div>

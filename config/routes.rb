@@ -18,7 +18,7 @@ Rails.application.routes.draw do
 
 #管理者側のルーティング
   namespace :admin do
-    get "top" => "homes#top"
+    root "homes#top"
 
     resources :customers,only: [:index, :show, :edit, :update] do
     end
@@ -32,7 +32,7 @@ Rails.application.routes.draw do
     resources :making_status,only: [:update] do
     end
 
-    resources :orders,only: [:show, :update ] do
+    resources :orders,only: [:index, :show, :update ] do
     end
   end
 
@@ -55,8 +55,8 @@ Rails.application.routes.draw do
     resources :items,only: [:index, :show ] do
     end
 
-    get 'orders/finish' => 'orders#finish'
-    get 'orders/comfirm' => 'orders#comfirm'
+    post 'orders/finish' => 'orders#finish'
+    post 'orders/comfirm' => 'orders#comfirm'
     resources :orders,only: [:new, :create, :index, :show ] do
     end
   end
