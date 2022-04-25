@@ -15,8 +15,7 @@
           <td>
             〒<%= @order.postal_code %>
             <%= @order.address %>
-            <%= @order.last_name %>
-            <%= @order.first_name %>
+            <%= @order.name %>
           </td>
         </tr>
         <tr>
@@ -35,7 +34,7 @@
     	<table class="table table-striped">
         <tr>
           <th class="info">商品合計</th>
-          <td class="text-right col-xs-5"><%= taxed_price(@ordered_items) %>円</td>
+          <td class="text-right col-xs-5"><%= @order.total_payment - @order.postage %>円</td>
         </tr>
         <tr>
           <th class="info">配送料</th>
