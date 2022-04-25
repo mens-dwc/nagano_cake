@@ -4,6 +4,8 @@ class Public::ItemsController < ApplicationController
   def index #items_path
     @items=Item.all
     @itemss =Item.where(is_status: 'false')
+    @genres = Genre.all
+    #Denreのshow  genre_path
   end
 
   def show #item_path(item.id)

@@ -1,27 +1,7 @@
-<div class="genrekara" style="font-size :20px;" >ジャンルから探す</div>
-
-    <table class="table table-bordered table-hover text-center ec-genre-list" >
-      <tr>
-        <td>
-          <%= link_to "全商品を表示", @items_path, class:"ec-genre-list-item" %>
-        </td>
-      </tr>
-      <% @genres.each do |genre| %>
-      <% if genre.is_genres_status == false %>
-        <tr>
-          <td>
-            <%= link_to genre.name,genre_path(genre.id),class:"ec-genre-list-item"%>
-            </td>
-        </tr>
-           <% end %>
-           <% end %>
-    </table>
-
-
 <div class='container'>
   <div class='row'>
     <div class='col-12'>
-      <h2 class="mt-5">商品一覧    全<%= @itemss.count%>件</h2>
+      <h2 class="mt-5"><%= @genre.name %> 一覧(全<%#= @genres.count %>件)</h2>
 
 
 		  	<div class="d-flex align-content-around flex-wrap">
