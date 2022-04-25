@@ -32,8 +32,8 @@
 
                   <tr>
                   <th>ステータス</th>
-                  <td><% if @item.is_status==false %>販売中
-                      <% else @item.is_status==true %>販売停止中
+                  <td><% if @item.is_status==false %><span class="text-success">販売中</span>
+                      <% else @item.is_status==true %><span class="text-danger">販売停止中</sapn>
                       <% end %>
                   </td>
                   </tr>
