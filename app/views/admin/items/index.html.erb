@@ -1,40 +1,39 @@
 <div class="container">
   <h2 class="mt-5">管理者商品一覧</h2>
-
-<div><%= link_to "新規商品登録", new_admin_item_path, class:"row justify-content-end" %></div>
-
-<table  class="table table-hover">
-  <thead>
-    <tr>
-      <th scope="col">商品ID</th>
-       <th scope="col">商品名</th>
-        <th scope="col">税抜価格</th>
-         <th scope="col">ジャンル</th>
-          <th scope="col">ステータス</th>
-    </tr>
-  </thead>
-
-    <tbody>
-      <tr>
-      <% @items.each do |item| %>
-        <td><%= item.id %></td>
-        <td><%=link_to admin_item_path(item.id) do %>
-            <%= item.name %>
-            <% end %>
-        </td>
-        <td><%= item.price.to_s(:delimited)%>円</td>
-        <td><%= item.genre.name %></td>
-        <td><% if item.is_status==false %><span class="text-success">販売中</span>
-            <% else item.is_status==true %><span class="text-danger">販売停止中</span>
-            <% end %>
-        </td>
-        <%# if item.image.attached? %>
-        <%#= image_tag item.image, size: "50x50" %>
-        <%# else %>
-        <%#= image_tag 'no_image', size: "50x50" %>
-        <%# end %>
-      </tr>
-      <% end %>
-    </tbody>
-</table>
+      <div><%= link_to "新規商品登録", new_admin_item_path, class:"row justify-content-end" %></div>
+      
+            <table  class="table table-hover">
+              <thead>
+                <tr>
+                  <th scope="col">商品ID</th>
+                   <th scope="col">商品名</th>
+                    <th scope="col">税抜価格</th>
+                     <th scope="col">ジャンル</th>
+                      <th scope="col">ステータス</th>
+                </tr>
+              </thead>
+              
+                <tbody>
+                  <tr>
+                  <% @items.each do |item| %>
+                    <td><%= item.id %></td>
+                    <td><%=link_to admin_item_path(item.id) do %>
+                        <%= item.name %>
+                        <% end %>
+                    </td>
+                    <td><%= item.price.to_s(:delimited)%>円</td>
+                    <td><%= item.genre.name %></td>
+                    <td><% if item.is_status==false %><span class="text-success">販売中</span>
+                        <% else item.is_status==true %><span class="text-danger">販売停止中</span>
+                        <% end %>
+                    </td>
+                    <%# if item.image.attached? %>
+                    <%#= image_tag item.image, size: "50x50" %>
+                    <%# else %>
+                    <%#= image_tag 'no_image', size: "50x50" %>
+                    <%# end %>
+                  </tr>
+                  <% end %>
+                </tbody>
+            </table>
 </div>
