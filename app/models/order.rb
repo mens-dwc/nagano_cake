@@ -3,6 +3,8 @@ class Order < ApplicationRecord
   has_many :ordered_items
   has_many :items, through: :ordered_items
 
+  validates :name, :postal_code, :address, presence:true
+
   enum payment_type: { credit_card: 0, transfer: 1 }
 
   def self.address_name(user)
