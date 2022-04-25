@@ -29,7 +29,7 @@
           <td><%= order.total_payment %>円</td>
           <td><%= order.status %></td>
           <td colspan="6">
-            <%= link_to "表示する", customers_order_path(order), class: "btn btn-success" %>
+            <%= link_to "表示する", order_path(order), class: "btn btn-success" %>
           </td>
         </tr>
       </tbody>
