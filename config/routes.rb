@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'genres/show'
   #顧客側のTOPページとaboutページのルーティング
   root "public/homes#top"
   get "about" => "public/homes#about"
@@ -32,7 +33,9 @@ Rails.application.routes.draw do
     resources :making_status,only: [:update] do
     end
 
-    resources :orders,only: [:index, :show, :update ] do
+    resources :orders,only: [:index, :show ] do
+      patch '/orders/:id/order_status' => 'orders#order_status_update', as: "order_status" # 注文ステータスupdate
+      patch '/orders/:id/item_status' => 'orders#item_status_update', as: "item_status" # 製作ステータスupdate
     end
   end
 
@@ -40,7 +43,7 @@ Rails.application.routes.draw do
   scope module: :public do
     resources :addresses,only: [:index, :edit, :create, :update, :destroy ] do
     end
-
+    
     resources :cart_items,only: [:index, :create, :update, :destroy ] do
       collection do
         delete 'all_destroy'
@@ -59,6 +62,8 @@ Rails.application.routes.draw do
     post 'orders/comfirm' => 'orders#comfirm'
     resources :orders,only: [:new, :create, :index, :show ] do
     end
+    
+    resources :genres, only: [:show]
   end
 
 end

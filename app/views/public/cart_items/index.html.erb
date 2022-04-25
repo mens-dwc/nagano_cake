@@ -3,7 +3,7 @@
     <div class="mt-5">
         <h1>ショッピングカート</h1>
 
-            ここの下空白クリックで飛んでしまう<div><%=link_to "カートを空にする", all_destroy_cart_items_path, method: :delete,"data-confirm" => '買ってください',class:"row justify-content-end"%></div>
+         <div class="row justify-content-end"><%=link_to "カートを空にする", all_destroy_cart_items_path, method: :delete,"data-confirm" => '買ってください',class:"btn btn-danger"%></div>
 
                 <table class="table table-hover table-bordered col-xs-10" >
                     <thead>
@@ -20,16 +20,22 @@
                         <% @cart_items.each do |cart_item| %>
                         <tr>
                             <td><%= cart_item.item.name %></td>
-                            <td><%= cart_item.item.with_tax_price %>円</td>
-                            <td><%= cart_item.quantity.to_i%>個</td>
-                            <td><%= cart_item.subtotal %>円</td>
-                            <td><%=link_to "削除する", cart_item_path(cart_item.id), method: :delete %></td>
+                            <td><%= cart_item.item.with_tax_price.to_s(:delimited)%>円</td>
+                            <td>
+                            <%= form_with model: cart_item, url: cart_item_path(cart_item.id),method: :patch do |f| %>
+                            <%= f.select :quantity,*[1..100]  %>個
+                            <%= f.submit "変更する", class:"btn btn-primary" %>
+                            <% end %>
+                            </td>
+                            <%#td><%#= cart_item.quantity.to_i%>
+                            <td><%= cart_item.subtotal.to_s(:delimited)%>円</td>
+                            <td><%=link_to "削除する", cart_item_path(cart_item.id), method: :delete,class:"btn btn-danger" %></td>
                         </tr>
                         <% end %>
                         <tr>
                             <td colspan="3"><%=link_to "買い物を続ける",items_path ,class: 'btn btn-sm btn-primary' %></td>
                             <td>合計金額</td>
-                            <td><%=@total %>円</td>
+                            <td><%=@total.to_s(:delimited)%>円</td>
                         </tr>
                     </tbody>
                 </table>

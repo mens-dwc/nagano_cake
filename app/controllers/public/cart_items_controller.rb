@@ -18,27 +18,24 @@ class Public::CartItemsController < ApplicationController
           cart_item.quantity += params[:cart_item][:quantity].to_i
           #cart_item.quantityに今追加したparams[:cart_item][:quantity]を加える
                                                                 #.to_iとして数字として扱う
-
+          cart_item.save
+          redirect_to cart_items_path
        # もしカート内に「同じ」商品がない場合は通常の保存処理
       elsif @cart_item.save
           redirect_to cart_items_path
       # 保存できない処理 elsiftem_path(item.id)
       elsif
-          redirect_to cart_items_path
+          redirect_to item_path(item.id)
       end
   end
 
 
 
   def update #cart_item_path patch put
-    @cart_item=CartItem.new(cart_item_params)
-    #@cart_item.customer_id = current_customer.id
-    #@cart_item.item_id=cart_item_params[:item_id]
-    if @cart_item.update
+    @cart_item = CartItem.find(params[:id])
+    #@cart.units += cart_params[:units].to_i
+    @cart_item.update(cart_item_params)
     redirect_to cart_items_path
-    else
-    render :index
-    end
   end
 
   def destroy #cart_item_path delete

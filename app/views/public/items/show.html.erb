@@ -14,7 +14,7 @@
               <div class="mt-5">
                   <h1><%= @item.name %><br></h1>
                   <h2><%= @item.introduction %><br></h2>
-                  <h3>￥<%= @item.with_tax_price%><span>(税込)</span></h3>
+                  <h3>￥<%= @item.with_tax_price.to_s(:delimited)%><span>(税込)</span></h3>
                   <%= form_with model: @cart_item, url: cart_items_path,method: :post do |f| %>
                   <%= f.hidden_field :item_id,value: @item.id %>
                   <%= f.select :quantity,*[1..10] %>
