@@ -20,7 +20,7 @@
 									<% end %>
 									<% end %>
 									<%= item.name %><br>
-									￥<%= item.with_tax_price %>円<br>
+									￥<%= item.with_tax_price.to_s(:delimited)%>円<br>
 							</td>
 							</td>
 									<% else %>
