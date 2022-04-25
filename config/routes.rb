@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'genres/show'
   #顧客側のTOPページとaboutページのルーティング
   root "public/homes#top"
   get "about" => "public/homes#about"
@@ -42,7 +43,7 @@ Rails.application.routes.draw do
   scope module: :public do
     resources :addresses,only: [:index, :edit, :create, :update, :destroy ] do
     end
-
+    
     resources :cart_items,only: [:index, :create, :update, :destroy ] do
       collection do
         delete 'all_destroy'
@@ -61,6 +62,8 @@ Rails.application.routes.draw do
     post 'orders/comfirm' => 'orders#comfirm'
     resources :orders,only: [:new, :create, :index, :show ] do
     end
+    
+    resources :genres, only: [:show]
   end
 
 end
