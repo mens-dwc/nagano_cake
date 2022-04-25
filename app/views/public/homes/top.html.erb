@@ -1,4 +1,4 @@
-<div class="container, text-center">
+<div class="container text-center">
   <div class="row">
     <div class="col-12">
       <%= image_tag('top.png', size: "800x400") %>
@@ -8,12 +8,13 @@
         購入には会員登録が必要になります。<br>
       </h4>
     </div>
+  </div>
 
-    <div class="col-12">
-      <div class="item--card-content">
+
         <h3>新着商品</h3>
+        <div class="row">
         <% @items.last(4).each do |item| %>
-          <div class="col-xs-3" style="padding-right: 0px; padding-left: 0px;">
+          <div class="col-lg-3" style="padding-right: 0px; padding-left: 0px;">
             <% if item.image.attached? %>
               <%= link_to item_path(item.id) do %>
               <%= image_tag item.image, size: "150x150" %><br>
@@ -25,14 +26,14 @@
 						<% end %>
             <%= item.name %><br>
             ¥<%= item.price.to_s(:delimited, delimiter: ',') %>
+          </div>
             <% end %>
+        </div>
+
             <h3>
               <%= link_to "もっと見る", items_path, class: "pull-right", style: "font-family: HiraMinPro-W6; color: #000000; margin: 30px 0;" %>
             </h3>
-          </div>
-      </div>
-    </div>
-  </div>
+
 </div>
 
 
