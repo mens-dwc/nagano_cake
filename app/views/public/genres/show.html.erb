@@ -1,20 +1,19 @@
+<h1><%= link_to "全商品を表示", items_path, class:"ec-genre-list-item" %></h1>
 <div class='container'>
   <div class='row'>
     <div class='col-12'>
       <h2 class="mt-5"><%= @genre.name %> 一覧(全<%= @itemss.count %>件)</h2>
-
-
-		  	<div class="d-flex align-content-around flex-wrap">
-		  		<table>
-		  			<tbody>
-		  				<tr>
-							    <% @items.each do |item| %>
-							    <% if item.is_status==false %>
-								  <% if item.image.attached? %>
+      <div class="d-flex align-content-around flex-wrap">
+						<table>
+							<tbody>
+								<tr>
+									<% @items.each do |item| %>
+									<% if item.is_status==false %>
+									<% if item.image.attached? %>
 							<td><%=link_to item_path(item.id) do %>
-							    <%= image_tag item.image, size: "150x150" %><br>
-							    <% end %>
-								  <% else %>
+									<%= image_tag item.image, size: "150x150" %><br>
+									<% end %>
+									<% else %>
 							<td><%=link_to item_path(item.id) do %>
 									<%= image_tag 'no_image', size: "150x150" %><br>
 									<% end %>
@@ -30,7 +29,6 @@
 					</tbody>
 				</table>
 			 </div>
-
 		</div>
 	</div>
 </div>
