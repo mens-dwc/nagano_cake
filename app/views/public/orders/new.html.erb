@@ -8,8 +8,8 @@
     <div class="col">
       <%= form_with model: @order, url: orders_comfirm_path, method: :post, local: true do |f| %>
         <h5 class="font-weight-bold">支払い方法</h5>
-        <label style="margin-left: 60px;"><%= f.radio_button :payment_type, 0, checked: "checked"%> クレジットカード </label><br>
-        <label style="margin-left: 60px;"><%= f.radio_button :payment_type, 1 %> 銀行振込</label>
+        <label style="margin-left: 60px;"><%= f.radio_button :payment_type, "credit_card", checked: "checked"%> クレジットカード </label><br>
+        <label style="margin-left: 60px;"><%= f.radio_button :payment_type, "transfer" %> 銀行振込</label>
 
         <h5 class="font-weight-bold">お届け先</h5>
 
