@@ -30,7 +30,7 @@ Rails.application.routes.draw do
     resources :genres,only: [:index, :edit, :create, :update ] do
     end
 
-    resources :making_status,only: [:update] do
+    resources :making_statuses,only: [:update] do
     end
 
     resources :orders,only: [:index, :show ] do
