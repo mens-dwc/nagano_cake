@@ -34,7 +34,7 @@
             <td>注文ステータス</td>
             <td>
               <%= form_with model: @order, url: admin_order_order_status_path(@order), method: :patch do |f| %>
-                <%= f.select :order_status, [["入金待ち", "入金待ち"], ["入金確認","入金確認"],["製作中","製作中"],["発送準備中","発送準備中"],["発送済み","発送済み"]], class: "form-control" %>
+                <%= f.select :order_status, Order.order_statuses_i18n.invert, class: "form-control-inline form-control-sm col-6"  %>
                 <%= f.submit "更新", class: "btn btn-primary btn-sm" %>
               <% end %>
             </td>
@@ -60,13 +60,13 @@
         <tbody>
           <tr>
             <td><%= ordered_item.item.name %></td>
-            <td><%= (ordered_item.item.price * 1.1).floor %></td>
-            <td><%= ordered_item.quantity %></td>
-            <td><%= (ordered_item.item.price * ordered_item.quantity * 1.1).floor %></td>
+            <td><%= (ordered_item.item.price * 1.1).floor.to_s(:delimited) %>円</td>
+            <td><%= ordered_item.quantity %>個</td>
+            <td><%= (ordered_item.item.price * ordered_item.quantity * 1.1).floor.to_s(:delimited) %>円</td>
             <td>
               <%= form_with model: ordered_item, url: admin_order_item_status_path(ordered_item, order_id: @order.id), method: :patch do |f| %>
-                <%= f.select :item_status, [["着手不可", "着手不可"], ["製作待ち","製作待ち"], ["製作中","製作中"], ["製作完了","製作完了"]] %>
-                <%= f.submit "更新", class: "btn btn-primary btn-sm ml-3" %>
+                <%= f.select :item_status, OrderedItem.item_statuses_i18n.invert,class: "form-control-inline form-control-sm col-6"  %>
+                <%= f.submit "更新", class: "btn btn-primary btn-sm" %>
               <% end %>
             </td>
           </tr>
@@ -80,7 +80,15 @@
       <tbody>
         <tr class="border-bottom border-dark">
           <td>商品合計</td>
-          <td><%= @items_total_price %></td>
+          <td><%= @items_total_price.floor.to_s(:delimited) %>円</td>
+        </tr>
+        <tr class="border-bottom border-dark">
+          <td>送料</td>
+          <td><%= @order.postage %>円</td>
+        </tr>
+        <tr class="border-bottom border-dark">
+          <td>請求金額合計</td>
+          <td><%= (@items_total_price + @order.postage).floor.to_s(:delimited) %>円</td>
         </tr>
       </tbody>
     </table>

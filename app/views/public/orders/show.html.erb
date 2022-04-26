@@ -29,23 +29,6 @@
       </tbody>
     </table>
     </div>
-    <div class="col-xs-3">
-      <h3>請求情報</h3>
-    	<table class="table table-striped">
-        <tr>
-          <th class="info">商品合計</th>
-          <td class="text-right col-xs-5"><%= @order.total_payment - @order.postage %>円</td>
-        </tr>
-        <tr>
-          <th class="info">配送料</th>
-          <td class="text-right col-xs-5"><%= @order.postage %>円</td>
-        </tr>
-        <tr>
-          <th class="info">ご請求金額</th>
-          <td class="text-right col-xs-5"><%= @order.total_payment %>円</td>
-        </tr>
-      </table>
-    </div>
     <table class="table table-striped">
       <thead>
         <tr>
@@ -59,13 +42,30 @@
         <% @ordered_items.each do |ordered_item| %>
         <tr>
           <td><%= ordered_item.item.name %></td>
-          <td><%= ordered_item.item.with_tax_price %>円</td>
+          <td><%= ordered_item.item.with_tax_price.to_s(:delimited) %>円</td>
           <td><%= ordered_item.quantity %></td>
-          <td><%#= ordered_item.subtotal %></td>
+          <td><%= ordered_item.subtotal.to_s(:delimited) %></td>
         </tr>
         <% end %>
       </tbody>
     </table>
+    <div class="col-lg-4 ">
+      <h3>請求情報</h3>
+    	<table class="table table-striped">
+        <tr>
+          <th class="info">商品合計</th>
+          <td class="text-right col-xs-5"><%= (@order.total_payment - @order.postage).to_s(:delimited) %>円</td>
+        </tr>
+        <tr>
+          <th class="info">配送料</th>
+          <td class="text-right col-xs-5"><%= @order.postage %>円</td>
+        </tr>
+        <tr>
+          <th class="info">ご請求金額</th>
+          <td class="text-right col-xs-5"><%= @order.total_payment.to_s(:delimited) %>円</td>
+        </tr>
+      </table>
+    </div>
       <% else %>
         <p>注文履歴がありません。</p>
     <% end %>
