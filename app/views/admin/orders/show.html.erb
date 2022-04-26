@@ -68,8 +68,8 @@
             <td><%= ordered_item.quantity %>個</td>
             <td><%= (ordered_item.item.price * ordered_item.quantity * 1.1).floor.to_s(:delimited) %>円</td>
             <td>
-              <%= form_with model: ordered_item, url: admin_order_item_status_path(ordered_item, order_id: @order.id), method: :patch do |f| %>
-                <%= f.select :item_status, OrderedItem.item_statuses_i18n.invert,class: "form-control-inline form-control-sm col-6"  %>
+              <%= form_with model: ordered_item, url: admin_making_status_path(ordered_item, order_id: @order.id), method: :patch do |f| %>
+                <%= f.select :making_status, OrderedItem.making_statuses_i18n.invert,class: "form-control-inline form-control-sm col-6"  %>
                 <%= f.submit "更新", class: "btn btn-primary btn-sm" %>
               <% end %>
             </td>
