@@ -6,7 +6,16 @@ class Public::OrdersController < ApplicationController
   end
 
   def comfirm #注文確認
+    params[:order][:payment_type] = params[:order][:payment_type].to_i #payment_methodの数値に変換
     @order = Order.new(order_params)
+    
+    
+        #支払い方法のセッション情報
+    if params[:payment_select] == "0"
+      session[:user][:payment_type] = 0
+    elsif params[:payment_select] == "1"
+      session[:user][:payment_type] = 1
+    end
 
 
     if params[:order][:address_option] == "0" #cutomerの登録時の住所
@@ -43,6 +52,7 @@ class Public::OrdersController < ApplicationController
       @ordered_item.order_id =  @order.id #注文商品に注文idを紐付け
       @ordered_item.save #注文商品を保存
     end #ループ終わり
+    current_customer.cart_items.destroy_all
     redirect_to orders_finish_path
 
   end
