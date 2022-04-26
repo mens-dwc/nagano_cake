@@ -38,7 +38,7 @@
             <td>注文ステータス</td>
             <td>
               <%= form_with model: @order, url: admin_order_order_status_path(@order), method: :patch do |f| %>
-                <%= f.select :status, Order.statuses_i18n.invert, class: "form-control-inline form-control-sm col-6"  %>
+                <%= f.select :status, Order.statuses_i18n.invert %>
                 <%= f.submit "更新", class: "btn btn-primary btn-sm" %>
               <% end %>
             </td>
@@ -47,8 +47,8 @@
       </table>
     </div>
   </div>
-  <div class="row mt-3">
-    <div class="col-sm-9">
+  <div class="row mt-3 ">
+    <div class="col-lg-9">
       <table class="table table-hover">
         <thead>
           <tr>
@@ -69,7 +69,7 @@
             <td><%= (ordered_item.item.price * ordered_item.quantity * 1.1).floor.to_s(:delimited) %>円</td>
             <td>
               <%= form_with model: ordered_item, url: admin_making_status_path(ordered_item, order_id: @order.id), method: :patch do |f| %>
-                <%= f.select :making_status, OrderedItem.making_statuses_i18n.invert,class: "form-control-inline form-control-sm col-6"  %>
+                <%= f.select :making_status, OrderedItem.making_statuses_i18n.invert  %>
                 <%= f.submit "更新", class: "btn btn-primary btn-sm" %>
               <% end %>
             </td>
@@ -79,7 +79,7 @@
       </table>
     </div>
   </div>
-  <div class="col-sm-3 d-flex">
+  <div class="col-lg-3">
     <table class="table table-borderless align-self-end">
       <tbody>
         <tr class="border-bottom border-dark">
