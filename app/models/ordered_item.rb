@@ -2,7 +2,7 @@ class OrderedItem < ApplicationRecord
   belongs_to :order
   belongs_to :item
 
-  enum item_status: {
+  enum making_status: {
     no_making: 0,
     make_waiting: 1,
     making: 2,
@@ -15,11 +15,10 @@ class OrderedItem < ApplicationRecord
   end
 
   after_update do
-    ordered_items = self.order.ordered_items
-    if ordered_items.any? {|ordered_item| ordered_item.item_status == 2 } == true # 条件分岐：製作ステータスが1つでも製作中にだったら
-      self.order.update(order_status: 2 ) # 注文ステータスを製作中に変更する
-    elsif ordered_items.all? {|ordered_item| ordered_item.item_status == 3 } == true # 条件分岐：製作ステータスが全て製作完了だったら
-    self.order.update(order_status: 3 ) # 注文ステータスを発送準備中に変更する
+    if self.order.ordered_items.exists?(making_status: 2 )
+      self.order.update(status: 2 ) # 注文ステータスを製作中に変更する
+    elsif self.order.ordered_items.where(making_status: 3 ).count == self.order.ordered_items.count
+      self.order.update(status: 3 ) # 注文ステータスを発送準備中に変更する
     end
   end
 end
