@@ -20,7 +20,7 @@
         </tr>
         <tr>
           <th>支払方法</th>
-          <td><%= @order.payment_type %></td>
+          <td><%= @order.payment_type_i18n %></td>
         </tr>
         <tr>
           <th>ステータス</th>
@@ -43,8 +43,8 @@
         <tr>
           <td><%= ordered_item.item.name %></td>
           <td><%= ordered_item.item.with_tax_price.to_s(:delimited) %>円</td>
-          <td><%= ordered_item.quantity %></td>
-          <td><%= ordered_item.subtotal.to_s(:delimited) %></td>
+          <td><%= ordered_item.quantity %>個</td>
+          <td><%= ordered_item.subtotal.to_s(:delimited) %>円</td>
         </tr>
         <% end %>
       </tbody>

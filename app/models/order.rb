@@ -21,9 +21,9 @@ class Order < ApplicationRecord
   end
 
   after_update do
-    if self.status == "入金確認" #入金確認の更新があった時
+    if self.status == 1 #入金確認の更新があった時
       self.ordered_items.each {|ordered_item|
-      ordered_item.update(item_status: "製作待ち") #製作ステータスを製作待ちに変更する
+      ordered_item.update(making_status: 1 ) #製作ステータスを製作待ちに変更する
       }
     end
   end
