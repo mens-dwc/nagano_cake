@@ -22,7 +22,7 @@
 				</div>
 			</div>
 
-			<div class='col-6'>
+			<div class='col-9'>
 				<div class="mt-5">
 					<h2>商品一覧    全<%= @itemss.count%>件</h2>
 						<table>
@@ -48,12 +48,12 @@
 									<% else %>
 									<% end %>
 									<% end %>
+
 								</tr>
 							</tbody>
 						</table>
 				</div>
 		 </div>
-
 	</div>
 </div>
-
+							<%= paginate @items %>

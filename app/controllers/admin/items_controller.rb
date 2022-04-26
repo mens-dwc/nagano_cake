@@ -1,5 +1,5 @@
 class Admin::ItemsController < ApplicationController
-
+before_action :authenticate_admin!
 
   def new #new_admin_item
      @item=Item.new
@@ -15,7 +15,7 @@ class Admin::ItemsController < ApplicationController
   end
 
   def index #admin_items_path
-    @items=Item.all
+    @items=Item.page(params[:page]).per(10)
   end
 
   def show #admin_item
