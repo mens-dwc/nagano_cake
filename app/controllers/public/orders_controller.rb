@@ -6,17 +6,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def comfirm #注文確認
-    params[:order][:payment_type] = params[:order][:payment_type].to_i #payment_methodの数値に変換
     @order = Order.new(order_params)
-    
-    
-        #支払い方法のセッション情報
-    if params[:payment_select] == "0"
-      session[:user][:payment_type] = 0
-    elsif params[:payment_select] == "1"
-      session[:user][:payment_type] = 1
-    end
-
 
     if params[:order][:address_option] == "0" #cutomerの登録時の住所
       @order.postal_code = current_customer.postal_code
@@ -73,7 +63,7 @@ class Public::OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:postal_code, :address, :name, :payment_type, :total_payment, :order, :postage, :customer_id, :status)
+    params.require(:order).permit(:postal_code, :address, :name, :payment_type, :total_payment, :postage, :customer_id, :status)
   end
 
 end
