@@ -19,7 +19,7 @@
           <% end %>
         </td>
         <td>
-          <%= last_name(order.customer) %><%= first_name(order.customer) %>
+          <%= order.name %>
         </td>
         <td><%= order.ordered_items.count %></td>
         <td><%= order.status %></td>
