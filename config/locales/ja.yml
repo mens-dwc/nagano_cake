@@ -5,8 +5,8 @@ ja:
         credit_card: "クレジットカード"
         transfer: "銀行振込"
       status:
-        waiting: "支払待ち"
-        paid_up: "支払済み"
+        waiting: "入金待ち"
+        paid_up: "入金済み"
         making: "製作中"
         preparing: "発送準備中"
         shipped: "発送済み"

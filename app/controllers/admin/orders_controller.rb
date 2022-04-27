@@ -19,24 +19,12 @@ class Admin::OrdersController < ApplicationController
     order = Order.find(params[:id])
     if order.update(order_params)
       redirect_to admin_order_path(order)
-      flash.now[:notice] = "注文ステータスを更新しました"
+      flash[:success] = "注文ステータスを更新しました"
     else
       render :show
-      flash.now[:notice] = "注文ステータスを更新できませんでした"
+      flash[:success] = "注文ステータスを更新できませんでした"
     end
   end
-
-  def item_status_update
-    ordered_item = OrderedItem.find(params[:id])
-    if ordered_item.update(ordered_item_params)
-      redirect_to admin_order_path(ordered_item.order_id)
-      flash.now[:notice] = "製作ステータスを更新しました"
-    else
-      render :show
-      flash.now[:notice] = "製作ステータスを更新できませんでした"
-    end
-  end
-
 
   private
 
@@ -44,7 +32,4 @@ class Admin::OrdersController < ApplicationController
     params.require(:order).permit(:status)
   end
 
-  def ordered_item_params
-    params.require(:ordered_item).permit(:item_status)
-  end
 end
