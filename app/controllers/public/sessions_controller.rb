@@ -12,7 +12,7 @@ class Public::SessionsController < Devise::SessionsController
     if @customer
       # 入力されたパスワードが正しいか確認
       if (@customer.valid_password?(params[:customer][:password]) && (@customer.active_for_authentication? == false))
-        flash[:notice] = "退会済みです。再度ご登録をしてご利用ください。"
+        flash[:alert] = "退会済みです。再度ご登録をしてご利用ください。"
         redirect_to new_customer_session_path
       end
     end
