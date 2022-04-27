@@ -38,13 +38,20 @@ class Public::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-   protected
 
-  # If you have extra params to permit, append them to the sanitizer.
-   def configure_sign_up_params
-     devise_parameter_sanitizer.permit(:sign_up, keys: [:last_name, :first_name, :kana_last_name, :kana_first_name, :postal_code, :address, :tel_number])
+   protected
+   def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:last_name, :first_name, :kana_last_name, :kana_first_name, :postal_code, :address, :tel_number])
+   end
+   def after_sign_up_path_for(resource)
+    customer_path(@customer.id)
+   end
+   def after_sign_out_path_for(resource)
+    root_path
    end
 
+
+  # If you have extra params to permit, append them to the sanitizer.
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_account_update_params
   #   devise_parameter_sanitizer.permit(:account_update, keys: [:attribute])
