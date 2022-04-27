@@ -13,7 +13,7 @@ import "popper.js";
 import "bootstrap";
 import "../stylesheets/application"
 import '@fortawesome/fontawesome-free/js/all'
-
+window.$ = window.jQuery = require('jquery');
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
@@ -25,13 +25,4 @@ ActiveStorage.start()
 //= require turbolinks
 //= require_tree .
 
-
-
-
-
-$(function() {
-    $('.a').slick({
-        dots: true,
-    });
-});
 
