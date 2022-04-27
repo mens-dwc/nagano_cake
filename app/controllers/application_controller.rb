@@ -25,7 +25,7 @@ class ApplicationController < ActionController::Base
     if customer_signed_in?
     root_path
     else
-    admin_session_path
+    customer_session_path
     end
   end
   def configure_permitted_parameters
