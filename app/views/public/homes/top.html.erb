@@ -22,6 +22,7 @@
         <div class="row">
         <% @items.last(4).each do |item| %>
           <div class="col-lg-3" style="padding-right: 0px; padding-left: 0px;">
+            <% if item.is_status==false %>
             <% if item.image.attached? %>
               <%= link_to item_path(item.id) do %>
               <%= image_tag item.image, size: "150x150" %><br>
@@ -33,8 +34,9 @@
 						<% end %>
             <%= item.name %><br>
             ¥<%= item.price.to_s(:delimited, delimiter: ',') %>
-          </div>
             <% end %>
+          </div>
+          <% end %>
         </div>
 
             <h3>
