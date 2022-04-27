@@ -19,14 +19,14 @@
         <tr>
           <td>
               <%= cart_item.item.name %></td>
-            <td><%= (cart_item.item.price*1.1).to_i %></td>
-            <td><%= cart_item.quantity %></td>
+            <td><%= (cart_item.item.price*1.1).floor.to_s(:delimited)%>円</td>
+            <td><%= cart_item.quantity %>個</td>
             <td>
        <!--小計の計算-->
-          <% subtotal = ((cart_item.item.price*cart_item.quantity)*1.1).to_i %>
+          <% subtotal = ((cart_item.item.price*cart_item.quantity)*1.1).floor.to_s(:delimited) %>
        <!--小計を表示-->
           <%= subtotal %>
-            </td>
+            円</td>
         </tr>
         <!--アイテムごとに合計金額に加算する-->
           <% total += (cart_item.item.price*cart_item.quantity)*1.1 %>
@@ -36,10 +36,10 @@
     <div class='col-3'>
       <table class="table table-bordered border-dark">
         <% @order.postage = 800 %>
-          <tr><th class="table-secondary">送料</th><td><%= @order.postage %></td></tr>
-          <tr><th class="table-secondary">商品合計</th><td><%= total.to_i %></td></tr>
+          <tr><th class="table-secondary">送料</th><td><%= @order.postage %>円</td></tr>
+          <tr><th class="table-secondary">商品合計</th><td><%= total.to_i.to_s(:delimited) %>円</td></tr>
         <% @order.total_payment = @order.postage + total.to_i %>
-          <tr><th class="table-secondary">請求金額</th><td><%= @order.total_payment %></td></tr>
+          <tr><th class="table-secondary">請求金額</th><td><%= @order.total_payment.floor.to_s(:delimited) %>円</td></tr>
       </table>
     </div>
   </div>

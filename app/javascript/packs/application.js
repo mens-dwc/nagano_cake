@@ -18,4 +18,20 @@ Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 
+//= require jquery
+//= require jquery.turbolinks
+//= require rails-ujs
+//= require activestorage
+//= require turbolinks
+//= require_tree .
+
+
+
+
+
+$(function() {
+    $('.a').slick({
+        dots: true,
+    });
+});
 
