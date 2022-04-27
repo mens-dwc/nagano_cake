@@ -33,6 +33,7 @@
           <i class="fas fa-sign-out-alt"></i> ログアウト
           <% end %>
         </li>
+        <%= render 'layouts/search' %>
 
         <% elsif admin_signed_in? %>
         <li class="nav-item">
@@ -60,6 +61,7 @@
           <i class="fas fa-sign-out-alt"></i> ログアウト
           <% end %>
         </li>
+        <%= render 'layouts/search' %>
         <% else %>
         <li class="nav-item">
           <%= link_to about_path, class: 'nav-link text-dark' do %>
@@ -81,6 +83,7 @@
           <i class="fas fa-sign-in-alt"></i> ログイン
           <% end %>
         </li>
+        <%= render 'layouts/search' %>
         <% end %>
         </ul>
       </div>

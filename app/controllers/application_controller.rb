@@ -1,6 +1,14 @@
 class ApplicationController < ActionController::Base
    before_action :configure_permitted_parameters, if: :devise_controller?
 
+   before_action :set_search
+
+  private
+    def set_search
+      @q = Item.ransack(params[:q])
+      @items = @q.result(distinct: true)
+    end
+
   protected
 
    def after_sign_in_path_for(resource)
