@@ -13,6 +13,7 @@ class Public::CustomersController < ApplicationController
     @customer = Customer.find(params[:id])
     if @customer.update(customer_params)
       redirect_to customer_path
+      flash[:success] = "会員情報を更新しました"
     else
       @customer = Customer.find(params[:id])
       render 'edit'
@@ -26,7 +27,7 @@ class Public::CustomersController < ApplicationController
     @customer = current_customer
     @customer.update(is_deleted: true)
     reset_session
-    flash[:notice] = "ありがとうございました。またのご利用を心よりお待ちしております。"
+    flash[:success] = "ありがとうございました。またのご利用を心よりお待ちしております。"
     redirect_to root_path
   end
 
