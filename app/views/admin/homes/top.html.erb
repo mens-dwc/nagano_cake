@@ -1,3 +1,4 @@
+<h2 class="admin-homes-top-title">管理者画面</h2>
 <div class="container">
   <h2 class="mt-5">注文履歴一覧</h2>
   <table class="table table-striped">
@@ -14,13 +15,13 @@
       <tr>
         <td>
           <%= link_to admin_order_path(order) do %>
-            <%= order.created_at.strftime('%Y/%m/%d(%a)') %>
+            <%= order.created_at %>
           <% end %>
         </td>
         <td>
           <%= order.name %>
         </td>
-        <td><%= order.ordered_items.count %></td>
+        <td><%= order.ordered_items.count %>個</td>
         <td><%= order.status_i18n %></td>
       </tr>
     </tbody>

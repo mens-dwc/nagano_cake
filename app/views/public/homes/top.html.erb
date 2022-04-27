@@ -1,8 +1,8 @@
-<div class="container text-center">
+<div class="container text-center" style="margin-top: 50px;">
 <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
-         <%= image_tag 'top.png'%>
+         <%= image_tag 'top.png' %>
     </div>
     <div class="carousel-item">
 　       <%= image_tag 'shop.jpg'%>
@@ -15,7 +15,7 @@
   <div class="row">
     <div class="col-12">
 
-      <h4 style="font-family: HiraMinPro-W6; color: #000000; margin: 20px 0;">ようこそ、NaganoCakeへ！<br>
+      <h2 style="font-family: HiraMinPro-W6; color: #000000; margin: 20px 0;">ようこそ、NaganoCakeへ！<br>
         このサイトは、ケーキ販売のECサイトになります。<br>
         会員でない方も商品の閲覧はできますが、<br>
         購入には会員登録が必要になります。<br>
@@ -24,7 +24,7 @@
   </div>
 
 
-        <h3>新着商品</h3>
+        <h3 style="color: #1F618D; margin: 20px 0;" ><i class="fas fa-flag"></i>新着商品</h3>
         <div class="row">
         <% @items.last(4).each do |item| %>
           <div class="col-lg-3" style="padding-right: 0px; padding-left: 0px;">
@@ -46,7 +46,8 @@
         </div>
 
             <h3>
-              <%= link_to "もっと見る", items_path, class: "pull-right", style: "font-family: HiraMinPro-W6; color: #000000; margin: 30px 0;" %>
+              <%= link_to "もっと見る...", items_path, class: "pull-right", style: "font-family: HiraMinPro-W6; color: #1F618D; margin: 30px 0;" %>
+              <i class="fas fa-search-plus"></i>
             </h3>
 
 </div>
