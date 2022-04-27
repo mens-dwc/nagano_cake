@@ -13,15 +13,15 @@
 
     <%= render 'layouts/header' %>
       <% if notice %>
-      	<div class="alert alert-success d-flex align-items-center">
+      	<div class="alert alert-success text-center">
       	  <span id="notice"><%= notice %></span>
       	</div>
       <% elsif flash[:success] %>
-      	<div class="alert alert-success d-flex align-items-center">
+      	<div class="alert alert-success text-center">
         	<span id="success"><%= flash[:success] %></span>
       	</div>
       <% elsif flash[:alert] %>
-      	<div class="alert alert-danger d-flex align-items-center">
+      	<div class="alert alert-danger text-center">
       	  <span id="alert"><%= flash[:alert] %></span>
       	</div>
       <% end %>
