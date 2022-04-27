@@ -8,7 +8,7 @@
         <tbody>
           <tr>
             <td>
-              <i class="fas fa-user"></i>購入者
+              <i class="fas fa-user fa-lg"></i>購入者
             </td>
             <td>
               <%= @order.customer.last_name %>
@@ -16,26 +16,30 @@
             </td>
           </tr>
           <td>
-            <i class="fas fa-calendar-alt"></i>注文日
+            <i class="fas fa-calendar-alt fa-lg"></i>注文日
           </td>
           <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
           <tr>
             <td>
-              <i class="fas fa-truck"></i>配送先
+              <i class="fas fa-truck fa-lg"></i>配送先
             </td>
             <td>
               〒<%= @order.postal_code %>
               <%= @order.address %>
               <%= @order.customer.last_name %>
-              <%= @order.customer.first_name %>
+              <%= @order.customer.first_name %>rails s
             </td>
           </tr>
           <tr>
-            <td>支払方法</td>
+            <td>
+              <i class="fas fa-search-dollar fa-lg"></i>支払方法
+            </td>
             <td><%= @order.payment_type_i18n %></td>
           </tr>
           <tr>
-            <td>注文ステータス</td>
+            <td>
+              <i class="fas fa-check-square fa-lg"></i>注文ステータス
+            </td>
             <td>
               <%= form_with model: @order, url: admin_order_order_status_path(@order), method: :patch do |f| %>
                 <%= f.select :status, Order.statuses_i18n.invert %>
