@@ -1,0 +1,61 @@
+<div class="container">
+  	<div class="row">
+
+        <div class='col-3'>
+        	<div class="mt-3">
+				<div class="genrekara" style="font-size :20px;" >ジャンルから探す</div>
+					<table class="table table-bordered table-hover text-center ec-genre-list" >
+					<tr>
+					<td>
+					<%= link_to "全商品を表示", @items_path%>
+					</td>
+					</tr>
+					<% @genres.each do |genre| %>
+					<%# if genre.is_genres_status == false %>
+					<tr>
+					<td>
+					<%= link_to genre.name,genre_path(genre.id)%>
+					</td>
+					</tr>
+					<%# end %>
+					<% end %>
+					</table>
+			</div>
+</div>
+
+			<div class="col-9">
+				<div class="mt-3">
+					<div class="d-flex flex-wrap align-items-center">
+						<div><h3 class="font-weight-bold">商品一覧</h3></div>
+						<div><span>(全<%= @itemss.count%>件)</span></div>
+					</div>
+						<div class="items d-flex flex-wrap align-content-stretch">
+											<% @items.each do |item| %>
+											<div class="item-box card border-0 w-25 p-3">
+											<% if item.is_status==false %>
+											<% if item.image.attached? %>
+											<%=link_to item_path(item.id) do %>
+											<%= image_tag item.image, size: "100x100" %><br>
+											<% end %>
+											<% else %>
+											<%=link_to item_path(item.id) do %>
+											<%= image_tag 'no_image', size: "100x100" %><br>
+											<% end %>
+											<% end %>
+											<%= item.name %><br>
+											￥<%= item.with_tax_price.to_s(:delimited)%>円<br>
+											<% else %>
+											<% end %>
+											</div>
+											<% end %>
+								</div>
+
+										<div>
+											<%= paginate @items %>
+										</div>
+       	</div>
+      </div>
+
+		</div>
+</div>
+

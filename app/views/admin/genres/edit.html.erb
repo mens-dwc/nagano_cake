@@ -1,0 +1,16 @@
+<div class="container" style="margin-top: 20px;">
+  <div class="row">
+    <div class="mx-auto">
+      <h2 class="font-weight-bold">ジャンル編集</h2>
+
+    <div class="edit-genre-form">
+    <%= form_for(@genre, url: admin_genre_path) do |f| %>
+          <%= f.label :ジャンル %>
+          <%= f.text_field :name,class: "col-md-4" %>
+          <%= f.submit "変更を保存する" ,class: "btn btn-primary" %>
+        </div>
+    <% end %>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,53 @@
+<div class="container" style="margin-top: 20px;">
+  <div class="row">
+    <div class="mx-auto">
+    <h2 class="font-weight-bold">注文情報入力</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <%= form_with model: @order, url: orders_comfirm_path, method: :post, local: true do |f| %>
+        <h5 class="font-weight-bold">支払い方法</h5>
+        <label><%= f.radio_button :payment_type, "credit_card", checked: "checked"%> クレジットカード </label><br>
+        <label><%= f.radio_button :payment_type, "transfer" %> 銀行振込</label>
+
+        <h5 class="font-weight-bold">お届け先</h5>
+
+            <%= f.radio_button :address_option, 0, checked: "checked" %>
+            <%= f.label :order_address, "ご自身の住所" %>
+            <br>
+            〒<%= current_customer.postal_code %>
+            <%= current_customer.address %><br>
+            <%= current_customer.last_name %>
+            <%= current_customer.first_name %>
+            <br>
+            <%= f.radio_button :address_option, 1 %>
+            <%= f.label :order_address, "登録済住所から選択" %>
+            <%= f.collection_select :address_id, @addresses, :id, :address_display %>
+
+            <br>
+
+            <br>
+            <%= f.radio_button :address_option, 2 %>
+            <%= f.label :order_address, "新しいお届け先" %>
+            <table>
+              <tr>
+                <td class='col-3'><%= f.label :postal_code, "郵便番号(ハイフンなし)" %></td>
+                <td class='col-9'><%= f.text_field :postal_code, :placeholder => "例:1234567"%></td>
+              </tr>
+              <tr>
+                <td class='col-3'><%= f.label :address, "住所" %></td>
+                <td class='col-9'><%= f.text_field :address, :placeholder => "例:長野県〇〇市〇〇町1-1-1", class: "w-100" %></td>
+              </tr>
+              <tr>
+                <td class='col-3'><%= f.label :name, "宛名" %></td>
+                <td class='col-9'><%= f.text_field :name, :placeholder => "例:ながのCAKE" %></td>
+              </tr>
+            </table>
+            <div class="row justify-content-center py-5">
+              <%= f.submit "確認画面へ進む" , class:"btn btn-primary" %>
+            </div>
+      <% end %>
+      </div>
+    </div>
+</div>

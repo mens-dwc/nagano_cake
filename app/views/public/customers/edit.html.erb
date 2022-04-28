@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h2 class="mt-5">会員情報編集</h2>
+      <%= form_with model: @customer, url: customer_path(@customer.id), method: :patch do |f| %>
+        <div class="col-xs-10">
+          <%= f.label :"氏名", class: "col-sm-3 control-label" %>
+          <div class="form-group">
+            <div class="form-inline">
+              <%= f.text_field :last_name, class: "col-sm-5 form-control" %>
+              　<%= f.text_field :first_name, class: "col-sm-5 form-control" %>
+            </div>
+          </div>
+          <%= f.label :"フリガナ", class: "col-sm-3 control-label" %>
+          <div class="form-group">
+            <div class="form-inline">
+              <%= f.text_field :kana_last_name, class: "col-sm-5 form-control" %>
+              　<%= f.text_field :kana_first_name, class: "col-sm-5 form-control" %>
+            </div>
+          </div>
+          <div class="form-group col-xs-12">
+            <%= f.label :"メールアドレス", class: "col-sm-5 control-label" %>
+            <%= f.email_field :email, class: 'col-sm-5 form-control' %>
+          </div>
+          <div class="form-group col-xs-12">
+            <%= f.label :"郵便番号", class: "col-sm-3 control-label" %>
+            <%= f.text_field :postal_code, class: 'col-sm-5 form-control' %>
+          </div>
+          <div class="form-group col-xs-12">
+            <%= f.label :"住所", class: "col-sm-3 control-label" %>
+            <%= f.text_field :address, class: 'col-sm-9 form-control' %>
+          </div>
+          <div class="form-group col-xs-12">
+            <%= f.label :"電話番号(ハイフンなし)", class: "col-sm-6 control-label" %>
+            <%= f.text_field :tel_number, class: 'col-sm-5 form-control' %>
+          </div>
+        </div>
+        <div class="actions col-xs-9 col-xs-offset-3">
+          <%= f.submit "編集内容を保存する", class: "btn btn-primary save col-xs-6" %>
+          <%= link_to '退会する', unsubscribe_path , class: "glyphicon glyphicon-tint btn btn-danger"%>
+        </div>
+      <% end %>
+      <div class="col-xs-12 mt-5">
+        <%= link_to "戻る",customer_path(current_customer), class: "glyphicon glyphicon-home btn btn-info" %>
+      </div>
+    </div>
+  </div>
+</div>

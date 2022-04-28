@@ -1,0 +1,45 @@
+<div class="container">
+  <h2 class="mt-5">会員一覧</h2>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>会員ID</th>
+        <th>氏名</th>
+        <th>メールアドレス</th>
+        <th>ステータス</th>
+      </tr>
+    </thead>
+    <% @customers.each do |customer| %>
+    <tbody>
+      <tr>
+        <td>
+          <i class="fas fa-search"></i>
+          <%= customer.id %>
+        </td>
+        <td>
+          <i class="far fa-user"></i>
+          <%= link_to admin_customer_path(customer), class: "btn-link" do %>
+            <%= customer.last_name %><%= customer.first_name %>
+          <% end %>
+        </td>
+        <td>
+          <i class="fas fa-envelope"></i>
+          <%= customer.email %>
+        </td>
+        <td>
+          <% if customer.is_deleted == true %>
+            <p>
+              <span class="text-danger">退会済</span>
+            </p>
+          <% else %>
+            <p>
+              <span class="text-success">有効</span>
+            </p>
+          <% end %>
+        </td>
+      </tr>
+    </tbody>
+    <% end %>
+  </table>
+  <%= paginate @customers %>
+</div>

@@ -1,0 +1,92 @@
+<header class="shadow-sm">
+
+  <nav class="navbar navbar-expand-lg navbar-white" style="background-color: #5DADE2;">
+    <div class="container">
+      <a class="navbar-brand p-3" href="/"><%= image_tag('logo2.jpg', size: "100x100") %></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ml-auto">
+        <% if customer_signed_in? %>
+        <li class="nav-item">
+            ようこそ、<%= current_customer.last_name %>さん！
+        </li>
+
+        <li class="nav-item">
+          <%= link_to customer_path(current_customer), class: 'nav-link text-dark' do %>
+          <i class="fas fa-user-alt"></i> マイページ
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to items_path, class: 'nav-link text-dark' do %>
+          <i class="fas fa-birthday-cake"></i> 商品一覧
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to cart_items_path, class: 'nav-link text-dark' do %>
+          <i class="fas fa-shopping-cart"></i> カート
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to destroy_customer_session_path, method: :delete, class: 'nav-link text-dark' do %>
+          <i class="fas fa-sign-out-alt"></i> ログアウト
+          <% end %>
+        </li>
+        <%= render 'layouts/search' %>
+
+        <% elsif admin_signed_in? %>
+        <li class="nav-item">
+          <%= link_to admin_items_path, class: 'nav-link text-dark' do %>
+          <i class="fas fa-birthday-cake"></i> 商品一覧
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to admin_customers_path, class: 'nav-link text-dark' do %>
+          <i class="fas fa-users"></i> 会員一覧
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to admin_root_path, class: 'nav-link text-dark' do %>
+          <i class="fas fa-history"></i> 注文履歴一覧
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to admin_genres_path, class: 'nav-link text-dark' do %>
+          <i class="fas fa-candy-cane"></i> ジャンル一覧
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link text-dark' do %>
+          <i class="fas fa-sign-out-alt"></i> ログアウト
+          <% end %>
+        </li>
+        <%= render 'layouts/search' %>
+        <% else %>
+        <li class="nav-item">
+          <%= link_to about_path, class: 'nav-link text-dark' do %>
+          <i class="fas fa-store"></i> About
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to items_path, class: 'nav-link text-dark' do %>
+          <i class="fas fa-birthday-cake"></i> 商品一覧
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to new_customer_registration_path, class: 'nav-link text-dark' do %>
+          <i class="fas fa-user-plus"></i> 新規登録
+          <% end %>
+        </li>
+         <li class="nav-item">
+          <%= link_to new_customer_session_path, class: 'nav-link text-dark' do %>
+          <i class="fas fa-sign-in-alt"></i> ログイン
+          <% end %>
+        </li>
+        <%= render 'layouts/search' %>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>

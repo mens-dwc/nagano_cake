@@ -1,0 +1,33 @@
+<div class="container" style="margin-top: 20px;">
+  <div class="row">
+    <div class="mx-auto">
+      <h2 class="font-weight-bold">ジャンル追加・一覧画面</h2>
+
+    <div class="form-group">
+    <%= form_for(@genre, url: admin_genres_path) do |f| %>
+          <%= f.label :ジャンル %>
+          <%= f.text_field :name,class: "col-md-4" %>
+          <%= f.submit "追加" ,class: "btn btn-primary" %>
+    <% end %>
+    </div>
+
+    <br>
+      <table class="table genre-index">
+        <thead>
+          <tr>
+            <th>ジャンル</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @genres.each do |genre| %>
+            <tr>
+              <td><%= genre.name %></td>
+              <td><%= link_to "編集する", edit_admin_genre_path(genre), class: "btn btn-success" %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

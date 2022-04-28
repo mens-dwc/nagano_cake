@@ -1,0 +1,43 @@
+<div class="container" style="margin-top: 20px;">
+ <div class="row">
+  <div class="col-12">
+    <h2 class="font-weight-bold">マイページ</h2>
+
+
+<table class="table table-striped table-bordered bg-light">
+  <tbody>
+    <tr>
+      <th width="20%">氏名</th>
+      <td><%= @customer.last_name %> <%= @customer.first_name %></td>
+    </tr>
+    <tr>
+      <th>カナ</th>
+      <td><%= @customer.kana_last_name %> <%= @customer.kana_first_name %></td>
+    </tr>
+    <tr>
+      <th>郵便番号</th>
+      <td><%= @customer.postal_code %></td>
+    </tr>
+    <tr>
+      <th>住所</th>
+      <td><%= @customer.address %></td>
+    </tr>
+    <tr>
+      <th>電話番号</th>
+      <td><%= @customer.tel_number %></td>
+    </tr>
+    <tr>
+      <th>メールアドレス</th>
+      <td><%= @customer.email %></td>
+    </tr>
+  </tbody>
+</table>
+
+<%= link_to "プロフィールを編集する", edit_customer_path(@customer), class: "btn btn-primary mb-4" %><br>
+
+<div class="border-top border-dark mb-3"></div>
+<%= link_to "▷  配送先一覧を確認",  addresses_path, class: "text-secondary" %><br>
+<%= link_to "▷  注文履歴を確認", orders_path, class: "text-secondary" %>
+    </div>
+  </div>
+</div>
