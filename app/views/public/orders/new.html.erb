@@ -1,15 +1,15 @@
-<div class="container">
-  <div class="row py-2">
-    <div class="col-10 offset-2">
-    <h2>注文情報入力</h2>
+<div class="container" style="margin-top: 20px;">
+  <div class="row">
+    <div class="mx-auto">
+    <h2 class="font-weight-bold">注文情報入力</h2>
     </div>
   </div>
   <div class="row">
     <div class="col">
       <%= form_with model: @order, url: orders_comfirm_path, method: :post, local: true do |f| %>
         <h5 class="font-weight-bold">支払い方法</h5>
-        <label style="margin-left: 60px;"><%= f.radio_button :payment_type, "credit_card", checked: "checked"%> クレジットカード </label><br>
-        <label style="margin-left: 60px;"><%= f.radio_button :payment_type, "transfer" %> 銀行振込</label>
+        <label><%= f.radio_button :payment_type, "credit_card", checked: "checked"%> クレジットカード </label><br>
+        <label><%= f.radio_button :payment_type, "transfer" %> 銀行振込</label>
 
         <h5 class="font-weight-bold">お届け先</h5>
 
